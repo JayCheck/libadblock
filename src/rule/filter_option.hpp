@@ -1,6 +1,7 @@
 #ifndef ADBLOCK_RULE_FILTER_OPTION_HPP
 #define ADBLOCK_RULE_FILTER_OPTION_HPP
 
+#include <cstdint>
 #include <bitset>
 #include <iosfwd>
 

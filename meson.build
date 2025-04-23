@@ -1,6 +1,6 @@
 project('libadblock', 'cpp', 'c',
   version: '3.0.0',
-  default_options: ['cpp_std=c++20'], license: 'GPL3' )
+  default_options: ['cpp_std=c++23'], license: 'GPL3' )
 
 # external dependencies for external and internal ones
 # If dependency appear in public header, add it to the public_deps othewise
@@ -57,3 +57,5 @@ impl_dep = declare_dependency(
 
 # allow client to pull in library with dependency('PROJECT NAME')
 meson.override_dependency(meson.project_name(), project_dep)
+
+subdir('test')
