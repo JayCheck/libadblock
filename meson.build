@@ -58,4 +58,5 @@ impl_dep = declare_dependency(
 # allow client to pull in library with dependency('PROJECT NAME')
 meson.override_dependency(meson.project_name(), project_dep)
 
+project_root = meson.current_source_dir()
 subdir('test')

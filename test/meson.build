@@ -1,4 +1,4 @@
-project_root = meson.current_source_dir()
+project_root = get_variable('project_root')
 
 project_deps = [
   dependency('gtest'),
@@ -14,7 +14,7 @@ project_inc = [
 ]
 
 project_defs = [
-  '-DDATA_DIR=' + meson.current_source_dir() / 'test' / 'data',
+  '-DDATA_DIR=' + meson.current_source_dir() / 'data',
   '-DPROJECT_ROOT=' + '"' + project_root + '"',
 ]
 
@@ -43,9 +43,7 @@ test_exe = executable(
   ],
 )
 
-test('libadblock_test', test_exe,
-  args: ['--gtest_brief=1']
-)
+test('libadblock_test', test_exe)
 
 run_target('run',
   command: [test_exe, '--gtest_brief=1'],
