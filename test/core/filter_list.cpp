@@ -64,11 +64,11 @@ TEST(Core_FilterList, Parameter)
     auto&& params = filterList.parameters();
 
     ASSERT_EQ(5, params.size());
-    EXPECT_EQ("bj7+igbVYKyRz2SssbmDOw"_r, params["Checksum"_r]);
-    EXPECT_EQ("4 days (update frequency)"_r, params["Expires"_r]);
-    EXPECT_EQ("https://easylist.adblockplus.org/"_r, params["Homepage"_r]);
+    EXPECT_EQ("Vy1V42fMOg87kEVrpN5W9A"_r, params["Checksum"_r]);
+    EXPECT_EQ("1 days (update frequency)"_r, params["Expires"_r]);
+    EXPECT_EQ("https://easylist.to/"_r, params["Homepage"_r]);
     EXPECT_EQ("EasyList"_r, params["Title"_r]);
-    EXPECT_EQ("201505100550"_r, params["Version"_r]);
+    EXPECT_EQ("202504271321"_r, params["Version"_r]);
 }
 
 TEST(Core_FilterList, Errors)

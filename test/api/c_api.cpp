@@ -63,7 +63,7 @@ adblock_db_t* API_F::m_db = nullptr;
 TEST_F(API_F, adblock_should_block)
 {
     auto const origin = to_string_t("http://www.adblock.org");
-    auto const url1 = to_string_t("http://a.kickass.to/sc-b98b537.js");
+    auto const url1 = to_string_t("http://aveherald.com/images/banners//sc-b98b537.js");
     adblock_string_t filter_list {}, reason {};
     adblock_error_t* err = nullptr;
 
@@ -109,7 +109,7 @@ TEST_F(API_F, adblock_should_block)
 
 TEST_F(API_F, adblock_element_hiding_selectors)
 {
-    auto const url = to_string_t("http://www.adblockplus.org/");
+    auto const url = to_string_t("http://300mblink.com/");
     adblock_str_array_t selectors;
     adblock_error_t *error = nullptr;
 
@@ -207,19 +207,19 @@ TEST_F(API_F, adblock_filter_list_parameters)
     EXPECT_EQ(5, values.length);
 
     EXPECT_EQ("Checksum", keys.ptr[0]);
-    EXPECT_EQ("PHWcd7bbJ8yORZTp1Xg3pQ", values.ptr[0]);
+    EXPECT_EQ("TNduC59v8vUnYVdk1wCr9g", values.ptr[0]);
 
     EXPECT_EQ("Expires", keys.ptr[1]);
-    EXPECT_EQ("4 days (update frequency)", values.ptr[1]);
+    EXPECT_EQ("1 days (update frequency)", values.ptr[1]);
 
     EXPECT_EQ("Homepage", keys.ptr[2]);
-    EXPECT_EQ("https://easylist.adblockplus.org/", values.ptr[2]);
+    EXPECT_EQ("https://easylist.to/", values.ptr[2]);
 
     EXPECT_EQ("Title", keys.ptr[3]);
     EXPECT_EQ("Fanboy's Social Blocking List", values.ptr[3]);
 
     EXPECT_EQ("Version", keys.ptr[4]);
-    EXPECT_EQ("201505071651", values.ptr[4]);
+    EXPECT_EQ("202504281431", values.ptr[4]);
 
     adblock_str_array_free(&keys);
     adblock_str_array_free(&values);
@@ -283,9 +283,9 @@ TEST_F(API_F, statistics)
 
     auto const stats = json::parse(to_string_view(json)).get_object();
 
-    EXPECT_EQ(20757, to_number(stats.at("Filter rule")));
-    EXPECT_EQ(33565, to_number(stats.at("Element hide rule")));
-    EXPECT_EQ(54322, to_number(stats.at("Total")));
+    EXPECT_EQ(38813, to_number(stats.at("Filter rule")));
+    EXPECT_EQ(29828, to_number(stats.at("Element hide rule")));
+    EXPECT_EQ(68641, to_number(stats.at("Total")));
 
     adblock_string_free(&json);
 }
@@ -309,7 +309,7 @@ TEST_F(API_F, remove_filter_set)
     auto const before = json::parse(to_string_view(json)).get_object();
     adblock_string_free(&json);
 
-    EXPECT_EQ(66244, to_number(before.at("Total")));
+    EXPECT_EQ(85440, to_number(before.at("Total")));
 
     adblock_remove_filter_list(this->db(), &path, &err);
     ASSERT_EQ(nullptr, err);
@@ -320,7 +320,7 @@ TEST_F(API_F, remove_filter_set)
     auto const after = json::parse(to_string_view(json)).get_object();
     adblock_string_free(&json);
 
-    EXPECT_EQ(54322, to_number(after.at("Total")));
+    EXPECT_EQ(68641, to_number(after.at("Total")));
 }
 
 TEST_F(API_F, adblock_db_free)
